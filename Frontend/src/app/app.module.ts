@@ -8,16 +8,13 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ButtonsModule } from 'ngx-bootstrap/buttons';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
-import {PropertyDetailResolverService} from './property/property-detail/property-detail-resolver.service';
 import { NgxGalleryModule } from '@kolkov/ngx-gallery';
 
 import { AppComponent } from './app.component';
 import { PropertyCardComponent } from './property/property-card/property-card.component';
 import { PropertyListComponent } from './property/property-list/property-list.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { HousingService } from './services/housing.service';
 import { AddPropertyComponent } from './property/add-property/add-property.component';
-import { PropertyDetailComponent } from './property/property-detail/property-detail.component';
 import { UserRegisterComponent } from './user/user-register/user-register.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { AlertifyService } from './services/alertify.service';
@@ -26,17 +23,18 @@ import { FilterPipe } from './Pipes/filter.pipe';
 import { SortPipe } from './Pipes/sort.pipe';
 import { HttpErrorInterceptorService } from './services/httperor-interceptor.service';
 import { DatePipe } from '@angular/common';
+import { HomeComponent } from './home/home.component';
+import { PlasticService } from './services/plastic.service';
+
 
 const appRoutes: Routes = [
-    {path: '', component: PropertyListComponent},
-    {path: 'rent-property', component: PropertyListComponent},
-    {path: 'add-property', component: AddPropertyComponent},
-    {path: 'property-detail/:id',
-        component: PropertyDetailComponent,
-        resolve: {prp: PropertyDetailResolverService}},
+    {path: '', component: HomeComponent },
+    {path: 'track', component: PropertyCardComponent},
+    {path: 'plastic-bag', component: PropertyListComponent},
+    {path: 'add-plastic', component: AddPropertyComponent},
     {path: 'user/login', component: UserLoginComponent},
     {path: 'user/register', component: UserRegisterComponent},
-    {path: '**', component: PropertyListComponent}
+    {path: '**', component: HomeComponent}
 ];
 
 @NgModule({
@@ -46,11 +44,11 @@ const appRoutes: Routes = [
         PropertyListComponent,
         NavBarComponent,
         AddPropertyComponent,
-        PropertyDetailComponent,
         UserRegisterComponent,
         UserLoginComponent,
         FilterPipe,
-        SortPipe
+        SortPipe,
+        HomeComponent
     ],
     imports: [
         BrowserModule,
@@ -72,10 +70,9 @@ const appRoutes: Routes = [
             multi: true
         },
         DatePipe,
-        HousingService,
+        PlasticService,
         AlertifyService,
-        AuthService,
-        PropertyDetailResolverService
+        AuthService
     ],
     bootstrap: [
         AppComponent

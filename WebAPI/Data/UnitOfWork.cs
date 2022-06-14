@@ -12,20 +12,15 @@ namespace WebAPI.Data
         {
             this.dc = dc;
         }
-        public ICityRepository CityRepository => 
-            new CityRepository(dc);
-
+        
         public IUserRepository UserRepository =>         
             new UserRepository(dc);
 
-        public IFurnishingTypeRepository FurnishingTypeRepository =>         
-            new FurnishingTypeRepository(dc);
+        public IPlasticTypeRepository PlasticTypeRepository =>         
+            new PlasticTypeRepository(dc);
 
-        public IPropertyTypeRepository PropertyTypeRepository =>         
-            new PropertyTypeRepository(dc);
-
-        public IPropertyRepository PropertyRepository => 
-            new PropertyRepository(dc);
+        public IPlasticRepository PlasticRepository => 
+            new PlasticRepository(dc);
 
         public async Task<bool> SaveAsync()
         {
